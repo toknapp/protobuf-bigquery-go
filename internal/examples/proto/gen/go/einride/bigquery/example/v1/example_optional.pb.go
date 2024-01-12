@@ -22,10 +22,12 @@ const (
 )
 
 type ExampleOptional struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Opt           *float64               `protobuf:"fixed64,1,opt,name=opt,proto3,oneof" json:"opt,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	OptDouble_1       *float64               `protobuf:"fixed64,1,opt,name=opt_double_1,json=optDouble1,proto3,oneof" json:"opt_double_1,omitempty"`
+	OptMessage_2      *ExampleOptMessage     `protobuf:"bytes,2,opt,name=opt_message_2,json=optMessage2,proto3,oneof" json:"opt_message_2,omitempty"`
+	OptOneofMessage_3 *ExampleOptOneof       `protobuf:"bytes,3,opt,name=opt_oneof_message_3,json=optOneofMessage3,proto3,oneof" json:"opt_oneof_message_3,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *ExampleOptional) Reset() {
@@ -58,21 +60,255 @@ func (*ExampleOptional) Descriptor() ([]byte, []int) {
 	return file_einride_bigquery_example_v1_example_optional_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ExampleOptional) GetOpt() float64 {
-	if x != nil && x.Opt != nil {
-		return *x.Opt
+func (x *ExampleOptional) GetOptDouble_1() float64 {
+	if x != nil && x.OptDouble_1 != nil {
+		return *x.OptDouble_1
 	}
 	return 0
+}
+
+func (x *ExampleOptional) GetOptMessage_2() *ExampleOptMessage {
+	if x != nil {
+		return x.OptMessage_2
+	}
+	return nil
+}
+
+func (x *ExampleOptional) GetOptOneofMessage_3() *ExampleOptOneof {
+	if x != nil {
+		return x.OptOneofMessage_3
+	}
+	return nil
+}
+
+type ExampleOptMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StringValue   string                 `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3" json:"string_value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExampleOptMessage) Reset() {
+	*x = ExampleOptMessage{}
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExampleOptMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExampleOptMessage) ProtoMessage() {}
+
+func (x *ExampleOptMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExampleOptMessage.ProtoReflect.Descriptor instead.
+func (*ExampleOptMessage) Descriptor() ([]byte, []int) {
+	return file_einride_bigquery_example_v1_example_optional_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ExampleOptMessage) GetStringValue() string {
+	if x != nil {
+		return x.StringValue
+	}
+	return ""
+}
+
+type ExampleOptOneof struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to OneofFields_1:
+	//
+	//	*ExampleOptOneof_OneofEmptyMessage_1
+	//	*ExampleOptOneof_OneofMessage_2
+	OneofFields_1 isExampleOptOneof_OneofFields_1 `protobuf_oneof:"oneof_fields_1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExampleOptOneof) Reset() {
+	*x = ExampleOptOneof{}
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExampleOptOneof) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExampleOptOneof) ProtoMessage() {}
+
+func (x *ExampleOptOneof) ProtoReflect() protoreflect.Message {
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExampleOptOneof.ProtoReflect.Descriptor instead.
+func (*ExampleOptOneof) Descriptor() ([]byte, []int) {
+	return file_einride_bigquery_example_v1_example_optional_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ExampleOptOneof) GetOneofFields_1() isExampleOptOneof_OneofFields_1 {
+	if x != nil {
+		return x.OneofFields_1
+	}
+	return nil
+}
+
+func (x *ExampleOptOneof) GetOneofEmptyMessage_1() *ExampleOptOneof_EmptyMessage {
+	if x != nil {
+		if x, ok := x.OneofFields_1.(*ExampleOptOneof_OneofEmptyMessage_1); ok {
+			return x.OneofEmptyMessage_1
+		}
+	}
+	return nil
+}
+
+func (x *ExampleOptOneof) GetOneofMessage_2() *ExampleOptOneof_Message {
+	if x != nil {
+		if x, ok := x.OneofFields_1.(*ExampleOptOneof_OneofMessage_2); ok {
+			return x.OneofMessage_2
+		}
+	}
+	return nil
+}
+
+type isExampleOptOneof_OneofFields_1 interface {
+	isExampleOptOneof_OneofFields_1()
+}
+
+type ExampleOptOneof_OneofEmptyMessage_1 struct {
+	OneofEmptyMessage_1 *ExampleOptOneof_EmptyMessage `protobuf:"bytes,1,opt,name=oneof_empty_message_1,json=oneofEmptyMessage1,proto3,oneof"`
+}
+
+type ExampleOptOneof_OneofMessage_2 struct {
+	OneofMessage_2 *ExampleOptOneof_Message `protobuf:"bytes,2,opt,name=oneof_message_2,json=oneofMessage2,proto3,oneof"`
+}
+
+func (*ExampleOptOneof_OneofEmptyMessage_1) isExampleOptOneof_OneofFields_1() {}
+
+func (*ExampleOptOneof_OneofMessage_2) isExampleOptOneof_OneofFields_1() {}
+
+type ExampleOptOneof_EmptyMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExampleOptOneof_EmptyMessage) Reset() {
+	*x = ExampleOptOneof_EmptyMessage{}
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExampleOptOneof_EmptyMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExampleOptOneof_EmptyMessage) ProtoMessage() {}
+
+func (x *ExampleOptOneof_EmptyMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExampleOptOneof_EmptyMessage.ProtoReflect.Descriptor instead.
+func (*ExampleOptOneof_EmptyMessage) Descriptor() ([]byte, []int) {
+	return file_einride_bigquery_example_v1_example_optional_proto_rawDescGZIP(), []int{2, 0}
+}
+
+type ExampleOptOneof_Message struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StringValue   string                 `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3" json:"string_value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExampleOptOneof_Message) Reset() {
+	*x = ExampleOptOneof_Message{}
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExampleOptOneof_Message) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExampleOptOneof_Message) ProtoMessage() {}
+
+func (x *ExampleOptOneof_Message) ProtoReflect() protoreflect.Message {
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExampleOptOneof_Message.ProtoReflect.Descriptor instead.
+func (*ExampleOptOneof_Message) Descriptor() ([]byte, []int) {
+	return file_einride_bigquery_example_v1_example_optional_proto_rawDescGZIP(), []int{2, 1}
+}
+
+func (x *ExampleOptOneof_Message) GetStringValue() string {
+	if x != nil {
+		return x.StringValue
+	}
+	return ""
 }
 
 var File_einride_bigquery_example_v1_example_optional_proto protoreflect.FileDescriptor
 
 const file_einride_bigquery_example_v1_example_optional_proto_rawDesc = "" +
 	"\n" +
-	"2einride/bigquery/example/v1/example_optional.proto\x12\x1beinride.bigquery.example.v1\"0\n" +
-	"\x0fExampleOptional\x12\x15\n" +
-	"\x03opt\x18\x01 \x01(\x01H\x00R\x03opt\x88\x01\x01B\x06\n" +
-	"\x04_optB\xab\x02\n" +
+	"2einride/bigquery/example/v1/example_optional.proto\x12\x1beinride.bigquery.example.v1\"\xae\x02\n" +
+	"\x0fExampleOptional\x12%\n" +
+	"\fopt_double_1\x18\x01 \x01(\x01H\x00R\n" +
+	"optDouble1\x88\x01\x01\x12W\n" +
+	"\ropt_message_2\x18\x02 \x01(\v2..einride.bigquery.example.v1.ExampleOptMessageH\x01R\voptMessage2\x88\x01\x01\x12`\n" +
+	"\x13opt_oneof_message_3\x18\x03 \x01(\v2,.einride.bigquery.example.v1.ExampleOptOneofH\x02R\x10optOneofMessage3\x88\x01\x01B\x0f\n" +
+	"\r_opt_double_1B\x10\n" +
+	"\x0e_opt_message_2B\x16\n" +
+	"\x14_opt_oneof_message_3\"6\n" +
+	"\x11ExampleOptMessage\x12!\n" +
+	"\fstring_value\x18\x01 \x01(\tR\vstringValue\"\xb1\x02\n" +
+	"\x0fExampleOptOneof\x12n\n" +
+	"\x15oneof_empty_message_1\x18\x01 \x01(\v29.einride.bigquery.example.v1.ExampleOptOneof.EmptyMessageH\x00R\x12oneofEmptyMessage1\x12^\n" +
+	"\x0foneof_message_2\x18\x02 \x01(\v24.einride.bigquery.example.v1.ExampleOptOneof.MessageH\x00R\roneofMessage2\x1a\x0e\n" +
+	"\fEmptyMessage\x1a,\n" +
+	"\aMessage\x12!\n" +
+	"\fstring_value\x18\x01 \x01(\tR\vstringValueB\x10\n" +
+	"\x0eoneof_fields_1B\xab\x02\n" +
 	"\x1fcom.einride.bigquery.example.v1B\x14ExampleOptionalProtoP\x01Zcgo.einride.tech/protobuf-bigquery/internal/examples/proto/gen/einride/bigquery/example/v1;examplev1\xa2\x02\x03EBE\xaa\x02\x1bEinride.Bigquery.Example.V1\xca\x02\x1bEinride\\Bigquery\\Example\\V1\xe2\x02'Einride\\Bigquery\\Example\\V1\\GPBMetadata\xea\x02\x1eEinride::Bigquery::Example::V1b\x06proto3"
 
 var (
@@ -87,16 +323,24 @@ func file_einride_bigquery_example_v1_example_optional_proto_rawDescGZIP() []byt
 	return file_einride_bigquery_example_v1_example_optional_proto_rawDescData
 }
 
-var file_einride_bigquery_example_v1_example_optional_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_einride_bigquery_example_v1_example_optional_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_einride_bigquery_example_v1_example_optional_proto_goTypes = []any{
-	(*ExampleOptional)(nil), // 0: einride.bigquery.example.v1.ExampleOptional
+	(*ExampleOptional)(nil),              // 0: einride.bigquery.example.v1.ExampleOptional
+	(*ExampleOptMessage)(nil),            // 1: einride.bigquery.example.v1.ExampleOptMessage
+	(*ExampleOptOneof)(nil),              // 2: einride.bigquery.example.v1.ExampleOptOneof
+	(*ExampleOptOneof_EmptyMessage)(nil), // 3: einride.bigquery.example.v1.ExampleOptOneof.EmptyMessage
+	(*ExampleOptOneof_Message)(nil),      // 4: einride.bigquery.example.v1.ExampleOptOneof.Message
 }
 var file_einride_bigquery_example_v1_example_optional_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	1, // 0: einride.bigquery.example.v1.ExampleOptional.opt_message_2:type_name -> einride.bigquery.example.v1.ExampleOptMessage
+	2, // 1: einride.bigquery.example.v1.ExampleOptional.opt_oneof_message_3:type_name -> einride.bigquery.example.v1.ExampleOptOneof
+	3, // 2: einride.bigquery.example.v1.ExampleOptOneof.oneof_empty_message_1:type_name -> einride.bigquery.example.v1.ExampleOptOneof.EmptyMessage
+	4, // 3: einride.bigquery.example.v1.ExampleOptOneof.oneof_message_2:type_name -> einride.bigquery.example.v1.ExampleOptOneof.Message
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_einride_bigquery_example_v1_example_optional_proto_init() }
@@ -105,13 +349,17 @@ func file_einride_bigquery_example_v1_example_optional_proto_init() {
 		return
 	}
 	file_einride_bigquery_example_v1_example_optional_proto_msgTypes[0].OneofWrappers = []any{}
+	file_einride_bigquery_example_v1_example_optional_proto_msgTypes[2].OneofWrappers = []any{
+		(*ExampleOptOneof_OneofEmptyMessage_1)(nil),
+		(*ExampleOptOneof_OneofMessage_2)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_einride_bigquery_example_v1_example_optional_proto_rawDesc), len(file_einride_bigquery_example_v1_example_optional_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
