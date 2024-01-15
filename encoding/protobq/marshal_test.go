@@ -369,6 +369,17 @@ func TestMarshalOptions_Marshal(t *testing.T) {
 			opt:      MarshalOptions{Schema: SchemaOptions{UseOneofFields: true}},
 			expected: map[string]bigquery.Value{},
 		},
+
+		{
+			name: "allow unknown enum values",
+			msg: &examplev1.ExampleEnum{
+				EnumValue: examplev1.ExampleEnum_Enum(100),
+			},
+			opt: MarshalOptions{Schema: SchemaOptions{UseOneofFields: true}, DiscardUnknownEnumValues: true},
+			expected: map[string]bigquery.Value{
+				"enum_value": nil,
+			},
+		},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
 			actual, err := tt.opt.Marshal(tt.msg)
