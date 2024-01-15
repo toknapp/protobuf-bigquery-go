@@ -400,6 +400,27 @@ func TestUnmarshalOptions_Unmarshal(t *testing.T) {
 			opt:      UnmarshalOptions{Schema: SchemaOptions{UseOneofFields: true}},
 			expected: &examplev1.ExampleOneof{},
 		},
+
+		{
+			name:     "discard unknown enum string",
+			row:      map[string]bigquery.Value{"enum_value": "ENUM_VALUE_100"},
+			opt:      UnmarshalOptions{DiscardUnknownEnumValues: true},
+			expected: &examplev1.ExampleEnum{EnumValue: examplev1.ExampleEnum_ENUM_UNSPECIFIED},
+		},
+
+		{
+			name:     "discard unknown enum number",
+			row:      map[string]bigquery.Value{"enum_value": 100},
+			opt:      UnmarshalOptions{DiscardUnknownEnumValues: true},
+			expected: &examplev1.ExampleEnum{EnumValue: examplev1.ExampleEnum_ENUM_UNSPECIFIED},
+		},
+
+		{
+			name:     "discard enum null",
+			row:      map[string]bigquery.Value{"enum_value": nil},
+			opt:      UnmarshalOptions{DiscardUnknownEnumValues: true},
+			expected: &examplev1.ExampleEnum{EnumValue: examplev1.ExampleEnum_ENUM_UNSPECIFIED},
+		},
 	} {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
