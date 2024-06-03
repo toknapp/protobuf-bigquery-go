@@ -41,21 +41,23 @@ func Test_Integration_PublicDataSets(t *testing.T) {
 			Message:   &publicv1.FilmLocation{},
 		},
 
-		{
-			ProjectID: "bigquery-public-data",
-			DatasetID: "hacker_news",
-			TableID:   "stories",
-			Limit:     10,
-			Message:   &publicv1.HackerNewsStory{},
-		},
+		// no longer accessible
+		// {
+		// 	ProjectID: "bigquery-public-data",
+		// 	DatasetID: "hacker_news",
+		// 	TableID:   "stories",
+		// 	Limit:     10,
+		// 	Message:   &publicv1.HackerNewsStory{},
+		// },
 
-		{
-			ProjectID: "bigquery-public-data",
-			DatasetID: "london_bicycles",
-			TableID:   "cycle_hire",
-			Limit:     10,
-			Message:   &publicv1.LondonBicycleRental{},
-		},
+		// no longer accessible
+		// {
+		// 	ProjectID: "bigquery-public-data",
+		// 	DatasetID: "london_bicycles",
+		// 	TableID:   "cycle_hire",
+		// 	Limit:     10,
+		// 	Message:   &publicv1.LondonBicycleRental{},
+		// },
 
 		{
 			ProjectID: "bigquery-public-data",
@@ -65,16 +67,17 @@ func Test_Integration_PublicDataSets(t *testing.T) {
 			Message:   &publicv1.SanFransiscoTransitStopTime{},
 		},
 
-		{
-			ProjectID: "bigquery-public-data",
-			DatasetID: "london_bicycles",
-			TableID:   "cycle_stations",
-			Limit:     10,
-			Message:   &publicv1.LondonBicycleStation{},
-			UnmarshalOptions: protobq.UnmarshalOptions{
-				DiscardUnknown: true, // Ignore non-snake case field "nbEmptyDocks".
-			},
-		},
+		// no longer accessible
+		// {
+		// 	ProjectID: "bigquery-public-data",
+		// 	DatasetID: "london_bicycles",
+		// 	TableID:   "cycle_stations",
+		// 	Limit:     10,
+		// 	Message:   &publicv1.LondonBicycleStation{},
+		// 	UnmarshalOptions: protobq.UnmarshalOptions{
+		// 		DiscardUnknown: true, // Ignore non-snake case field "nbEmptyDocks".
+		// 	},
+		// },
 
 		{
 			ProjectID: "bigquery-public-data",
