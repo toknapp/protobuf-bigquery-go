@@ -1,6 +1,7 @@
 package protobq
 
 import (
+	"fmt"
 	"testing"
 	"time"
 
@@ -380,11 +381,24 @@ func TestMarshalOptions_Marshal(t *testing.T) {
 				"enum_value": nil,
 			},
 		},
+		{
+			name: "disallow unknown enum values",
+			msg: &examplev1.ExampleEnum{
+				EnumValue: examplev1.ExampleEnum_Enum(100),
+			},
+			opt:      MarshalOptions{Schema: SchemaOptions{UseOneofFields: true}, DiscardUnknownEnumValues: false},
+			expected: nil,
+		},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
 			actual, err := tt.opt.Marshal(tt.msg)
-			assert.NilError(t, err)
-			assert.DeepEqual(t, tt.expected, actual)
+			if tt.expected == nil {
+				fmt.Println(err)
+				assert.Error(t, err, "unknown enum number: 100, fieldname: einride.bigquery.example.v1.ExampleEnum.enum_value")
+			} else {
+				assert.NilError(t, err)
+				assert.DeepEqual(t, tt.expected, actual)
+			}
 		})
 	}
 }

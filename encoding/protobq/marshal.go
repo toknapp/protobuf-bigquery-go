@@ -272,7 +272,8 @@ func (o MarshalOptions) marshalEnumValue(
 		// Use 'null' for BQ rows to indicate that no value could be determined.
 		return nil, nil
 	}
-	return nil, fmt.Errorf("unknown enum number: %v", value.Enum())
+	path := fmt.Sprintf("%s.%s", field.Parent().FullName(), field.Name())
+	return nil, fmt.Errorf("unknown enum number: %v, fieldname: %v", value.Enum(), path)
 }
 
 func (o MarshalOptions) marshalWellKnownTypeValue(
