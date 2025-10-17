@@ -390,7 +390,6 @@ func TestMarshalOptions_Marshal(t *testing.T) {
 			expected: nil,
 		},
 	} {
-		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			actual, err := tt.opt.Marshal(tt.msg)
 			if tt.expected == nil {
