@@ -22,23 +22,12 @@ const (
 )
 
 type ExampleOptional struct {
-<<<<<<< HEAD
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Opt           *float64               `protobuf:"fixed64,1,opt,name=opt,proto3,oneof" json:"opt,omitempty"`
-	unknownFields protoimpl.UnknownFields
-
-	OptDouble_1       *float64           `protobuf:"fixed64,1,opt,name=opt_double_1,json=optDouble1,proto3,oneof" json:"opt_double_1,omitempty"`
-	OptMessage_2      *ExampleOptMessage `protobuf:"bytes,2,opt,name=opt_message_2,json=optMessage2,proto3,oneof" json:"opt_message_2,omitempty"`
-	OptOneofMessage_3 *ExampleOptOneof   `protobuf:"bytes,3,opt,name=opt_oneof_message_3,json=optOneofMessage3,proto3,oneof" json:"opt_oneof_message_3,omitempty"`
-	sizeCache     protoimpl.SizeCache
-=======
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	OptDouble_1       *float64               `protobuf:"fixed64,1,opt,name=opt_double_1,json=optDouble1,proto3,oneof" json:"opt_double_1,omitempty"`
 	OptMessage_2      *ExampleOptMessage     `protobuf:"bytes,2,opt,name=opt_message_2,json=optMessage2,proto3,oneof" json:"opt_message_2,omitempty"`
 	OptOneofMessage_3 *ExampleOptOneof       `protobuf:"bytes,3,opt,name=opt_oneof_message_3,json=optOneofMessage3,proto3,oneof" json:"opt_oneof_message_3,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
->>>>>>> master
 }
 
 func (x *ExampleOptional) Reset() {
@@ -302,12 +291,6 @@ var File_einride_bigquery_example_v1_example_optional_proto protoreflect.FileDes
 
 const file_einride_bigquery_example_v1_example_optional_proto_rawDesc = "" +
 	"\n" +
-<<<<<<< HEAD
-	"2einride/bigquery/example/v1/example_optional.proto\x12\x1beinride.bigquery.example.v1\"0\n" +
-	"\x0fExampleOptional\x12\x15\n" +
-	"\x03opt\x18\x01 \x01(\x01H\x00R\x03opt\x88\x01\x01B\x06\n" +
-	"\x04_optB\xab\x02\n" +
-=======
 	"2einride/bigquery/example/v1/example_optional.proto\x12\x1beinride.bigquery.example.v1\"\xae\x02\n" +
 	"\x0fExampleOptional\x12%\n" +
 	"\fopt_double_1\x18\x01 \x01(\x01H\x00R\n" +
@@ -326,7 +309,6 @@ const file_einride_bigquery_example_v1_example_optional_proto_rawDesc = "" +
 	"\aMessage\x12!\n" +
 	"\fstring_value\x18\x01 \x01(\tR\vstringValueB\x10\n" +
 	"\x0eoneof_fields_1B\xab\x02\n" +
->>>>>>> master
 	"\x1fcom.einride.bigquery.example.v1B\x14ExampleOptionalProtoP\x01Zcgo.einride.tech/protobuf-bigquery/internal/examples/proto/gen/einride/bigquery/example/v1;examplev1\xa2\x02\x03EBE\xaa\x02\x1bEinride.Bigquery.Example.V1\xca\x02\x1bEinride\\Bigquery\\Example\\V1\xe2\x02'Einride\\Bigquery\\Example\\V1\\GPBMetadata\xea\x02\x1eEinride::Bigquery::Example::V1b\x06proto3"
 
 var (
