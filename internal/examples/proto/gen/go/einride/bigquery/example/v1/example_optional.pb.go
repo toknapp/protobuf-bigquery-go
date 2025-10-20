@@ -22,6 +22,7 @@ const (
 )
 
 type ExampleOptional struct {
+<<<<<<< HEAD
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Opt           *float64               `protobuf:"fixed64,1,opt,name=opt,proto3,oneof" json:"opt,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -30,6 +31,14 @@ type ExampleOptional struct {
 	OptMessage_2      *ExampleOptMessage `protobuf:"bytes,2,opt,name=opt_message_2,json=optMessage2,proto3,oneof" json:"opt_message_2,omitempty"`
 	OptOneofMessage_3 *ExampleOptOneof   `protobuf:"bytes,3,opt,name=opt_oneof_message_3,json=optOneofMessage3,proto3,oneof" json:"opt_oneof_message_3,omitempty"`
 	sizeCache     protoimpl.SizeCache
+=======
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	OptDouble_1       *float64               `protobuf:"fixed64,1,opt,name=opt_double_1,json=optDouble1,proto3,oneof" json:"opt_double_1,omitempty"`
+	OptMessage_2      *ExampleOptMessage     `protobuf:"bytes,2,opt,name=opt_message_2,json=optMessage2,proto3,oneof" json:"opt_message_2,omitempty"`
+	OptOneofMessage_3 *ExampleOptOneof       `protobuf:"bytes,3,opt,name=opt_oneof_message_3,json=optOneofMessage3,proto3,oneof" json:"opt_oneof_message_3,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+>>>>>>> master
 }
 
 func (x *ExampleOptional) Reset() {
@@ -84,20 +93,17 @@ func (x *ExampleOptional) GetOptOneofMessage_3() *ExampleOptOneof {
 }
 
 type ExampleOptMessage struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StringValue   string                 `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3" json:"string_value,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	StringValue string `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3" json:"string_value,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ExampleOptMessage) Reset() {
 	*x = ExampleOptMessage{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *ExampleOptMessage) String() string {
@@ -108,7 +114,7 @@ func (*ExampleOptMessage) ProtoMessage() {}
 
 func (x *ExampleOptMessage) ProtoReflect() protoreflect.Message {
 	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -131,24 +137,21 @@ func (x *ExampleOptMessage) GetStringValue() string {
 }
 
 type ExampleOptOneof struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Types that are assignable to OneofFields_1:
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to OneofFields_1:
 	//
 	//	*ExampleOptOneof_OneofEmptyMessage_1
 	//	*ExampleOptOneof_OneofMessage_2
 	OneofFields_1 isExampleOptOneof_OneofFields_1 `protobuf_oneof:"oneof_fields_1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ExampleOptOneof) Reset() {
 	*x = ExampleOptOneof{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *ExampleOptOneof) String() string {
@@ -159,7 +162,7 @@ func (*ExampleOptOneof) ProtoMessage() {}
 
 func (x *ExampleOptOneof) ProtoReflect() protoreflect.Message {
 	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -174,23 +177,27 @@ func (*ExampleOptOneof) Descriptor() ([]byte, []int) {
 	return file_einride_bigquery_example_v1_example_optional_proto_rawDescGZIP(), []int{2}
 }
 
-func (m *ExampleOptOneof) GetOneofFields_1() isExampleOptOneof_OneofFields_1 {
-	if m != nil {
-		return m.OneofFields_1
+func (x *ExampleOptOneof) GetOneofFields_1() isExampleOptOneof_OneofFields_1 {
+	if x != nil {
+		return x.OneofFields_1
 	}
 	return nil
 }
 
 func (x *ExampleOptOneof) GetOneofEmptyMessage_1() *ExampleOptOneof_EmptyMessage {
-	if x, ok := x.GetOneofFields_1().(*ExampleOptOneof_OneofEmptyMessage_1); ok {
-		return x.OneofEmptyMessage_1
+	if x != nil {
+		if x, ok := x.OneofFields_1.(*ExampleOptOneof_OneofEmptyMessage_1); ok {
+			return x.OneofEmptyMessage_1
+		}
 	}
 	return nil
 }
 
 func (x *ExampleOptOneof) GetOneofMessage_2() *ExampleOptOneof_Message {
-	if x, ok := x.GetOneofFields_1().(*ExampleOptOneof_OneofMessage_2); ok {
-		return x.OneofMessage_2
+	if x != nil {
+		if x, ok := x.OneofFields_1.(*ExampleOptOneof_OneofMessage_2); ok {
+			return x.OneofMessage_2
+		}
 	}
 	return nil
 }
@@ -212,18 +219,16 @@ func (*ExampleOptOneof_OneofEmptyMessage_1) isExampleOptOneof_OneofFields_1() {}
 func (*ExampleOptOneof_OneofMessage_2) isExampleOptOneof_OneofFields_1() {}
 
 type ExampleOptOneof_EmptyMessage struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ExampleOptOneof_EmptyMessage) Reset() {
 	*x = ExampleOptOneof_EmptyMessage{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *ExampleOptOneof_EmptyMessage) String() string {
@@ -234,7 +239,7 @@ func (*ExampleOptOneof_EmptyMessage) ProtoMessage() {}
 
 func (x *ExampleOptOneof_EmptyMessage) ProtoReflect() protoreflect.Message {
 	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -250,20 +255,17 @@ func (*ExampleOptOneof_EmptyMessage) Descriptor() ([]byte, []int) {
 }
 
 type ExampleOptOneof_Message struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StringValue   string                 `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3" json:"string_value,omitempty"`
 	unknownFields protoimpl.UnknownFields
-
-	StringValue string `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3" json:"string_value,omitempty"`
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ExampleOptOneof_Message) Reset() {
 	*x = ExampleOptOneof_Message{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *ExampleOptOneof_Message) String() string {
@@ -274,7 +276,7 @@ func (*ExampleOptOneof_Message) ProtoMessage() {}
 
 func (x *ExampleOptOneof_Message) ProtoReflect() protoreflect.Message {
 	mi := &file_einride_bigquery_example_v1_example_optional_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -300,10 +302,31 @@ var File_einride_bigquery_example_v1_example_optional_proto protoreflect.FileDes
 
 const file_einride_bigquery_example_v1_example_optional_proto_rawDesc = "" +
 	"\n" +
+<<<<<<< HEAD
 	"2einride/bigquery/example/v1/example_optional.proto\x12\x1beinride.bigquery.example.v1\"0\n" +
 	"\x0fExampleOptional\x12\x15\n" +
 	"\x03opt\x18\x01 \x01(\x01H\x00R\x03opt\x88\x01\x01B\x06\n" +
 	"\x04_optB\xab\x02\n" +
+=======
+	"2einride/bigquery/example/v1/example_optional.proto\x12\x1beinride.bigquery.example.v1\"\xae\x02\n" +
+	"\x0fExampleOptional\x12%\n" +
+	"\fopt_double_1\x18\x01 \x01(\x01H\x00R\n" +
+	"optDouble1\x88\x01\x01\x12W\n" +
+	"\ropt_message_2\x18\x02 \x01(\v2..einride.bigquery.example.v1.ExampleOptMessageH\x01R\voptMessage2\x88\x01\x01\x12`\n" +
+	"\x13opt_oneof_message_3\x18\x03 \x01(\v2,.einride.bigquery.example.v1.ExampleOptOneofH\x02R\x10optOneofMessage3\x88\x01\x01B\x0f\n" +
+	"\r_opt_double_1B\x10\n" +
+	"\x0e_opt_message_2B\x16\n" +
+	"\x14_opt_oneof_message_3\"6\n" +
+	"\x11ExampleOptMessage\x12!\n" +
+	"\fstring_value\x18\x01 \x01(\tR\vstringValue\"\xb1\x02\n" +
+	"\x0fExampleOptOneof\x12n\n" +
+	"\x15oneof_empty_message_1\x18\x01 \x01(\v29.einride.bigquery.example.v1.ExampleOptOneof.EmptyMessageH\x00R\x12oneofEmptyMessage1\x12^\n" +
+	"\x0foneof_message_2\x18\x02 \x01(\v24.einride.bigquery.example.v1.ExampleOptOneof.MessageH\x00R\roneofMessage2\x1a\x0e\n" +
+	"\fEmptyMessage\x1a,\n" +
+	"\aMessage\x12!\n" +
+	"\fstring_value\x18\x01 \x01(\tR\vstringValueB\x10\n" +
+	"\x0eoneof_fields_1B\xab\x02\n" +
+>>>>>>> master
 	"\x1fcom.einride.bigquery.example.v1B\x14ExampleOptionalProtoP\x01Zcgo.einride.tech/protobuf-bigquery/internal/examples/proto/gen/einride/bigquery/example/v1;examplev1\xa2\x02\x03EBE\xaa\x02\x1bEinride.Bigquery.Example.V1\xca\x02\x1bEinride\\Bigquery\\Example\\V1\xe2\x02'Einride\\Bigquery\\Example\\V1\\GPBMetadata\xea\x02\x1eEinride::Bigquery::Example::V1b\x06proto3"
 
 var (
@@ -319,7 +342,7 @@ func file_einride_bigquery_example_v1_example_optional_proto_rawDescGZIP() []byt
 }
 
 var file_einride_bigquery_example_v1_example_optional_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_einride_bigquery_example_v1_example_optional_proto_goTypes = []interface{}{
+var file_einride_bigquery_example_v1_example_optional_proto_goTypes = []any{
 	(*ExampleOptional)(nil),              // 0: einride.bigquery.example.v1.ExampleOptional
 	(*ExampleOptMessage)(nil),            // 1: einride.bigquery.example.v1.ExampleOptMessage
 	(*ExampleOptOneof)(nil),              // 2: einride.bigquery.example.v1.ExampleOptOneof
@@ -343,70 +366,8 @@ func file_einride_bigquery_example_v1_example_optional_proto_init() {
 	if File_einride_bigquery_example_v1_example_optional_proto != nil {
 		return
 	}
-	if !protoimpl.UnsafeEnabled {
-		file_einride_bigquery_example_v1_example_optional_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExampleOptional); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_einride_bigquery_example_v1_example_optional_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExampleOptMessage); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_einride_bigquery_example_v1_example_optional_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExampleOptOneof); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_einride_bigquery_example_v1_example_optional_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExampleOptOneof_EmptyMessage); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_einride_bigquery_example_v1_example_optional_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExampleOptOneof_Message); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
-	file_einride_bigquery_example_v1_example_optional_proto_msgTypes[0].OneofWrappers = []interface{}{}
-	file_einride_bigquery_example_v1_example_optional_proto_msgTypes[2].OneofWrappers = []interface{}{
+	file_einride_bigquery_example_v1_example_optional_proto_msgTypes[0].OneofWrappers = []any{}
+	file_einride_bigquery_example_v1_example_optional_proto_msgTypes[2].OneofWrappers = []any{
 		(*ExampleOptOneof_OneofEmptyMessage_1)(nil),
 		(*ExampleOptOneof_OneofMessage_2)(nil),
 	}

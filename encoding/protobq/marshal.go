@@ -28,6 +28,8 @@ func Marshal(msg proto.Message) (map[string]bigquery.Value, error) {
 type MarshalOptions struct {
 	// Schema contains the schema options.
 	Schema SchemaOptions
+
+	DiscardUnknownEnumValues bool
 }
 
 // Marshal marshals the given proto.Message in the BigQuery format using options in
@@ -265,7 +267,12 @@ func (o MarshalOptions) marshalEnumValue(
 	if enumValue := field.Enum().Values().ByNumber(enumNumber); enumValue != nil {
 		return string(enumValue.Name()), nil
 	}
-	return nil, fmt.Errorf("unknown enum number: %v", value.Enum())
+	if o.DiscardUnknownEnumValues {
+		// Use 'null' for BQ rows to indicate that no value could be determined.
+		return nil, nil
+	}
+	path := fmt.Sprintf("%s.%s", field.Parent().FullName(), field.Name())
+	return nil, fmt.Errorf("unknown enum number: %v, fieldname: %v", value.Enum(), path)
 }
 
 func (o MarshalOptions) marshalWellKnownTypeValue(

@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"os"
 
 	"go.einride.tech/sage/sg"
 	"go.einride.tech/sage/tools/sgconvco"
@@ -27,7 +28,10 @@ func main() {
 }
 
 func All(ctx context.Context) error {
-	sg.Deps(ctx, ConvcoCheck, FormatMarkdown, FormatYAML, Proto.All)
+	if os.Getenv("NO_CONVCO") == "" {
+		sg.Deps(ctx, ConvcoCheck)
+	}
+	sg.Deps(ctx, FormatMarkdown, FormatYAML, Proto.All)
 	sg.Deps(ctx, GoLint, GoTest)
 	sg.SerialDeps(ctx, GoModTidy, GitVerifyNoDiff)
 	return nil

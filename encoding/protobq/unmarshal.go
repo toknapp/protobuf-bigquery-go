@@ -37,6 +37,10 @@ type UnmarshalOptions struct {
 
 	// If DiscardUnknown is set, unknown fields are ignored.
 	DiscardUnknown bool
+
+	// If DiscardUnknownEnumValues is set, unknown enum values are set to the empty value.
+	// For compatibility, this is independent of the complementary DiscardUnknown option.
+	DiscardUnknownEnumValues bool
 }
 
 // Unmarshal reads the given BigQuery row and populates the given proto.Message using
@@ -635,20 +639,31 @@ func (o UnmarshalOptions) unmarshalEnumScalar(
 	if o.Schema.UseEnumNumbers {
 		v, ok := bqValue.(int64)
 		if !ok {
+			if o.DiscardUnknownEnumValues {
+				return protoreflect.Value{}, nil
+			}
 			return protoreflect.Value{}, fmt.Errorf(
 				"invalid BigQuery value %#v for enum %s number", bqValue, field.Enum().FullName(),
 			)
 		}
 		return protoreflect.ValueOfEnum(protoreflect.EnumNumber(int32(v))), nil
 	}
+
 	v, ok := bqValue.(string)
 	if !ok {
+		if o.DiscardUnknownEnumValues {
+			return protoreflect.Value{}, nil
+		}
 		return protoreflect.Value{}, fmt.Errorf(
 			"invalid BigQuery value %#v for enum %s", bqValue, field.Enum().FullName(),
 		)
 	}
+
 	enumVal := field.Enum().Values().ByName(protoreflect.Name(v))
 	if enumVal == nil {
+		if o.DiscardUnknownEnumValues {
+			return protoreflect.Value{}, nil
+		}
 		return protoreflect.Value{}, fmt.Errorf(
 			"unknown enum value %#v for enum %s", bqValue, field.Enum().FullName(),
 		)
