@@ -422,7 +422,6 @@ func TestUnmarshalOptions_Unmarshal(t *testing.T) {
 			expected: &examplev1.ExampleEnum{EnumValue: examplev1.ExampleEnum_ENUM_UNSPECIFIED},
 		},
 	} {
-		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			actual := proto.Clone(tt.expected)
 			proto.Reset(actual)
