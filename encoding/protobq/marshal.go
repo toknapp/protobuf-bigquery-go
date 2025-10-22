@@ -29,6 +29,8 @@ type MarshalOptions struct {
 	// Schema contains the schema options.
 	Schema SchemaOptions
 
+	// DiscardUnknownEnumValues indicates whether to set unknown enum values to null
+	// instead of returning an error.
 	DiscardUnknownEnumValues bool
 }
 
